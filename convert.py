@@ -53,9 +53,12 @@ def convert(dir, glob, out, use_original_file_name=False):
         if not image:
             print(f'ERR: File {file} is not a valid image')
         else:
-            print(f'Converting {file}...')
-            image = convert_image(image)
-            save_image_as_webp(image, file, out, use_original_file_name)
+            try:
+                print(f'Converting {file}...')
+                image = convert_image(image)
+                save_image_as_webp(image, file, out, use_original_file_name)
+            except:
+                print(f'Failed to convert image {file}!')
 
 
 def main(_=None):
